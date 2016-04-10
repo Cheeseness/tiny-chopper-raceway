@@ -51,7 +51,12 @@ Technologies
     This game uses the MIT licenced Godot engine. Visit godotengine.org for more information.
 
 
-Creative Commons Assets
+Third Party Assets
+
+    "NASDAQER" (https://fontlibrary.org/en/font/nasdaqer)
+      By Gustavo Paz, licenced under Creative Commons Attribution-ShakeAlike 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+      Modified and used as nasdaqer.fnt
+
     "bang-04-clean" (http://freesound.org/people/Eelke/sounds/170424/)
       By Eelke, licenced under Creative Commons 0 (http://creativecommons.org/publicdomain/zero/1.0/)
       Modified for 170424__eelke__bang-04-clean.wav
