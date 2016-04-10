@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="SampleLibrary" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://sounds/chopper_short.wav" type="Sample" index="1"></ext_resource>
+	<ext_resource path="res://sounds/ding.wav" type="Sample" index="0"></ext_resource>
+	<ext_resource path="res://sounds/245372__quaker540__hq-explosion.wav" type="Sample" index="3"></ext_resource>
+	<ext_resource path="res://sounds/139973__jessepash__crowd-yay-applause-25ppl-long.wav" type="Sample" index="4"></ext_resource>
+	<ext_resource path="res://sounds/crash.wav" type="Sample" index="2"></ext_resource>
+	<ext_resource path="res://sounds/170424__eelke__bang-04-clean.wav" type="Sample" index="5"></ext_resource>
+	<main_resource>
+		<dictionary name="samples/checkpoint" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="0">  </resource>
+		</dictionary>
+		<dictionary name="samples/pickup" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="5">  </resource>
+		</dictionary>
+		<dictionary name="samples/explode" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="3">  </resource>
+		</dictionary>
+		<dictionary name="samples/crash" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="2">  </resource>
+		</dictionary>
+		<dictionary name="samples/chopper_short" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="1">  </resource>
+		</dictionary>
+		<dictionary name="samples/lap" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="4">  </resource>
+		</dictionary>
+
+	</main_resource>
+</resource_file>

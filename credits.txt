@@ -1,0 +1,70 @@
+Tiny Chopper Raceway!
+
+
+Contributors
+
+    Josh "Cheeseness" Bush
+        Programming
+        Art
+
+    Henry "Attitude" Bush
+        Music
+        Sound Design
+
+    See github.com/Cheeseness/tiny-chopper-raceway for an up to date list of contributors and contributions
+
+
+Supporters
+
+    This example game was made with the Patreon support of the following people (in alphabetical order)
+        Kevin Becker
+        Timothy "Bidiot Bales" Bridges
+        Aaron Brown
+        Caroline Choong
+        Andy Conrad
+        Mullet Death
+        Ryan C. Gordon
+        JP LeBreton
+        Flesk
+        Jaco G
+        Erin, OK?
+        Seth McClain
+        Jennifer McMurray
+        NgBuckwangs
+        Laura Ramey
+        Gemma Refalo
+        Miriam "Mim" Roser
+        Daniel Scharrer
+        John Warner
+        Hannah Zicarelli
+
+
+Thanks
+
+    In addition to the above supporters (many of whom have contributed invaluable advice, feedback and enthusiasm), the developers would also like to thank the following people (in alphabetical order)
+        KiSak
+        Mark Stutzman
+
+
+Technologies
+
+    This game uses the MIT licenced Godot engine. Visit godotengine.org for more information.
+
+
+Creative Commons Assets
+    "bang-04-clean" (http://freesound.org/people/Eelke/sounds/170424/)
+      By Eelke, licenced under Creative Commons 0 (http://creativecommons.org/publicdomain/zero/1.0/)
+      Modified for 170424__eelke__bang-04-clean.wav
+
+    "HQ Explosion" (http://freesound.org/people/Quaker540/sounds/245372/)
+      By Quaker540, licenced under Creative Commons 0 (http://creativecommons.org/publicdomain/zero/1.0/)
+      Modified for 245372__quaker540__hq-explosion.wav
+
+    "Crowd.Yay.Applause.25ppl.Long.wav" (http://freesound.org/people/jessepash/sounds/139973/)
+      By jessepash, licenced under Creative Commons 0 (http://creativecommons.org/publicdomain/zero/1.0/)
+      Modified for Crowd.Yay.Applause.25ppl.Long.wav
+
+    "crash.wav" (http://freesound.org/people/sagetyrtle/sounds/40158/)
+      By sagetyrtle, licenced under Creative Commons 0 (http://creativecommons.org/publicdomain/zero/1.0/)
+      Modified for crash.wav
+
