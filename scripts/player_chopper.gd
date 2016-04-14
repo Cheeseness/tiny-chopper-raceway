@@ -177,7 +177,6 @@ func do_collision(impact_pos):
 			die()
 
 func set_next_checkpoint(id):
-	#Todo: next_checkpoint should be an array of checkpoints with the appropriate index
 	for c in next_checkpoints.keys():
 		self.remove_child(next_checkpoints[c])
 		if (next_checkpoints.has(c)):
@@ -242,6 +241,7 @@ func _process(delta):
 		#Todo: Allow partial user input to influence movement during death?
 		deathTime = deathTime + delta
 		if (deathTime > DEATH_LIMIT):
+			get_node("SamplePlayer").play("crash")
 			reset_bonuses()
 			dying = false
 			deathTime = 0
@@ -254,22 +254,26 @@ func _process(delta):
 			self.set_angular_damp(angular_damp)
 			self.set_pos(spawn_pos)
 			self.set_rot(0)
+			var closest_checkpoint = null
 			for c in next_checkpoints.keys():
-				self.set_rot(self.get_angle_to(c.get_pos()) - PI)
-				print(self.get_rot())
-				break
+				if (closest_checkpoint != null):
+					#Todo: Make this a little more efficient
+					if (self.get_pos().distance_to(c.get_pos()) < self.get_pos().distance_to(closest_checkpoint.get_pos())):
+						closest_checkpoint = c
+				else:
+					closest_checkpoint = c
+			self.set_rot(self.get_angle_to(closest_checkpoint.get_pos()) - PI)
 			sprite_blades.show()
 			sprite_chasis.show()
 			get_node("StreamPlayer").set_volume_db(Globals.get("effects_volume"))
 			get_node("StreamPlayer").set_paused(false)
-			#Todo: Maybe have a nice sound/effect here when we're done dying?
 			death_count += 1
 
 	if (current_fuel <= 0):
 		die()
 
 func _input(event):
-	#todo: User bindings
+	#Todo: User bindings
 	if (event.type == InputEvent.KEY):
 		if (event.is_action_pressed("ui_down") || event.is_action_released("ui_up")):
 			user_input.y += 1
@@ -279,6 +283,14 @@ func _input(event):
 			user_input.x += 1
 		if (event.is_action_pressed("ui_left") || event.is_action_released("ui_right")):
 			user_input.x -= 1
+
+		#If the engine misses a key up event due to the user alt+tabbing or having another app capture it, fix it next time they press that button
+		if (user_input.x > 1 || user_input.x < -1):
+			print("Godot missed a key up event.")
+			user_input.x = user_input.x / 2
+		if (user_input.y > 1 || user_input.y < -1):
+			print("Godot missed a key up event.")
+			user_input.y = user_input.y / 2
 
 	elif (event.type == InputEvent.JOYSTICK_MOTION):
 		if (event.axis == 2):
