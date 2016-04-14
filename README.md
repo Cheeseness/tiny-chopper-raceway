@@ -13,7 +13,7 @@ In this file, you can find:
 
 I hope you find something useful from playing Tiny Chopper Raceway and exploring its code!
 
-- Cheese
+-Cheese
 
 
 ## Licences
