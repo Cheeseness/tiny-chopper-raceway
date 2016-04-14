@@ -8,5 +8,10 @@ func _ready():
 		get_node("RichTextLabel").add_text(file.get_line())
 		get_node("RichTextLabel").newline()
 
+func activate():
+	get_node("Back").grab_focus();
+	self.show()
+
 func do_back():
 	self.hide()
+	get_parent().get_parent().activate()

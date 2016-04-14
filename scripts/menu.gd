@@ -59,7 +59,9 @@ func _ready():
 func end_level(player):
 	do_pause()
 	menu_level_end.populate_stats(player)
-	menu_level_end.show()
+	menu_level_end.activate()
+	if (current_level_index >= level_list.size() - 1):
+		menu_level_end.set_last_level()
 
 func load_level(level_index):
 	if (level_index < level_list.size() && level_index >= 0):
@@ -120,29 +122,31 @@ func do_new_game():
 
 func do_options():
 	hide_sub_menus()
-	menu_options.show()
+	menu_options.activate()
 
 func do_credits():
 	hide_sub_menus()
-	menu_credits.show()
+	menu_credits.activate()
 
 func do_level_select():
 	hide_sub_menus()
-	menu_level_select.show()
+	menu_level_select.activate()
 
 func do_restart_level():
 	level_loader.reload_level()
 	do_unpause()
 
+func activate():
+	if (level_loader.is_level_running()):
+		get_node("CanvasLayer/Menu/Resume").grab_focus()
+	else:
+		get_node("CanvasLayer/Menu/NewGame").grab_focus()
+
 func do_pause():
 	print("Pausing")
-	if (level_loader.is_level_running()):
-		get_tree().set_pause(true)
-		get_node("CanvasLayer/Menu/Resume").show()
-		get_node("CanvasLayer/Menu/NewGame").hide()
-		get_node("CanvasLayer/Menu/Restart").show()
-		get_node("CanvasLayer/Menu/Resume").grab_focus()
-		get_node("CanvasLayer/Menu").show()
+	get_tree().set_pause(true)
+	reset_buttons()
+	get_node("CanvasLayer/Menu").show()
 
 func do_unpause():
 	print("Unpausing")
@@ -153,9 +157,16 @@ func do_unpause():
 	get_node("CanvasLayer/Splash").hide()
 
 func reset_buttons():
-	get_node("CanvasLayer/Menu/Resume").hide()
-	get_node("CanvasLayer/Menu/Restart").hide()
-	get_node("CanvasLayer/Menu/NewGame").show()
+	if (level_loader.is_level_running()):
+		get_node("CanvasLayer/Menu/Resume").show()
+		get_node("CanvasLayer/Menu/NewGame").hide()
+		get_node("CanvasLayer/Menu/Restart").show()
+		get_node("CanvasLayer/Menu/Resume").grab_focus()
+	else:
+		get_node("CanvasLayer/Menu/Resume").hide()
+		get_node("CanvasLayer/Menu/Restart").hide()
+		get_node("CanvasLayer/Menu/NewGame").show()
+		get_node("CanvasLayer/Menu/NewGame").grab_focus()
 
 func hide_sub_menus():
 	menu_options.hide()
@@ -172,7 +183,7 @@ func do_website():
 	OS.shell_open(url)
 
 func toggle_window():
-	#Fixme: This tends to be a little crashy every now and again...
+	#Fixme: This tends to be a little crashy if few system resources are available
 	if(OS.is_window_fullscreen()):
 		menu_options.get_node("FullscreenToggle").set_text("Fullscreen Mode")
 		OS.set_window_fullscreen(false)

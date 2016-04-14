@@ -39,5 +39,5 @@ func get_time_string(time):
 	time = int(time)
 	var seconds = str(time % 60)
 	time = time - (time % 60)
-	minutes = str(time)
+	minutes = str(time / 60)
 	return minutes.pad_zeros(2) + ":" + seconds.pad_zeros(2) + ":" + milliseconds.pad_zeros(2)

@@ -7,6 +7,10 @@ func _ready():
 	get_node("Play").connect("pressed", self, "do_play")
 	get_node("ItemList").connect("item_selected", self, "update_selected_index")
 
+func activate():
+	get_node("ItemList").grab_focus()
+	self.show()
+
 func populate_level_list(levels):
 	var list = get_node("ItemList")
 	for l in levels:
@@ -24,3 +28,4 @@ func do_play():
 
 func do_back():
 	self.hide()
+	get_parent().get_parent().activate()

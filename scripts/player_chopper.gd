@@ -180,7 +180,9 @@ func set_next_checkpoint(id):
 	#Todo: next_checkpoint should be an array of checkpoints with the appropriate index
 	for c in next_checkpoints.keys():
 		self.remove_child(next_checkpoints[c])
-		next_checkpoints[c].queue_free()
+		if (next_checkpoints.has(c)):
+			#Todo: This is firing non-fatal errors?
+			next_checkpoints[c].queue_free()
 	next_checkpoints.clear()
 	for c in Globals.get("checkpoint_list"):
 		if (c.get_id() == id):
@@ -214,6 +216,8 @@ func advance_checkpoint(checkpoint):
 			checkpoint_counter += 1
 		set_next_checkpoint(checkpoint_counter)
 		current_fuel += CHECKPOINT_FUEL_BONUS
+		if (current_fuel > MAX_FUEL):
+			current_fuel = MAX_FUEL
 		canvas_hud.update_fuel_indicator(current_fuel)
 
 func _process(delta):
@@ -265,6 +269,7 @@ func _process(delta):
 		die()
 
 func _input(event):
+	#todo: User bindings
 	if (event.type == InputEvent.KEY):
 		if (event.is_action_pressed("ui_down") || event.is_action_released("ui_up")):
 			user_input.y += 1
@@ -276,12 +281,12 @@ func _input(event):
 			user_input.x -= 1
 
 	elif (event.type == InputEvent.JOYSTICK_MOTION):
-		if (event.axis == 0):
+		if (event.axis == 2):
 			if (abs(event.value) < 0.1):
 				user_input.x = 0
 			else:
 				user_input.x = event.value
-		if (event.axis == 2):
+		if (event.axis == 1):
 			if (abs(event.value) < 0.1):
 				user_input.y = 0
 			else:

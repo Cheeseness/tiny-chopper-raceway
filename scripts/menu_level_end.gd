@@ -5,6 +5,15 @@ func _ready():
 	get_node("Menu").connect("pressed", self, "do_back")
 	get_node("Continue").connect("pressed", self, "do_next_level")
 
+func activate():
+	get_node("Continue").show()
+	get_node("Continue").grab_focus()
+	self.show()
+
+func set_last_level():
+	get_node("Menu").grab_focus()
+	get_node("Continue").hide()
+
 func populate_stats(player):
 	get_node("Time").set_text(get_time_string(player.get_play_time()))
 	get_node("Laps").set_text(str(player.get_lap_count()))
@@ -22,7 +31,7 @@ func get_time_string(time):
 	time = int(time)
 	var seconds = str(time % 60)
 	time = time - (time % 60)
-	minutes = str(time)
+	minutes = str(time / 60)
 	return minutes.pad_zeros(2) + ":" + seconds.pad_zeros(2) + ":" + milliseconds.pad_zeros(2)
 
 func do_next_level():
@@ -31,3 +40,4 @@ func do_next_level():
 
 func do_back():
 	self.hide()
+	get_parent().get_parent().activate()

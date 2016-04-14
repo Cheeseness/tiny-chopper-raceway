@@ -11,8 +11,13 @@ func _ready():
 	get_node("LapsLess").connect("pressed", self, "do_laps_less")
 	get_node("LapsMore").connect("pressed", self, "do_laps_more")
 
+func activate():
+	get_node("FullscreenToggle").grab_focus()
+	self.show()
+
 func do_back():
 	self.hide()
+	get_parent().get_parent().activate()
 
 func do_fullscreen_toggle():
 	get_parent().get_parent().toggle_window()

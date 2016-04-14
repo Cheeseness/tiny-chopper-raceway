@@ -20,6 +20,7 @@ func get_player_instances():
 	return player_instances
 
 func end_level(player):
+	level_running = false
 	get_parent().end_level(player)
 
 func set_max_laps(_max_laps):
